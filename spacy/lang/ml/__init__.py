@@ -1,12 +1,10 @@
-# coding: utf8
-from __future__ import unicode_literals
-
+from ...language import BaseDefaults, Language
+from .lex_attrs import LEX_ATTRS
 from .stop_words import STOP_WORDS
 
-from ...language import Language
 
-
-class MalayalamDefaults(Language.Defaults):
+class MalayalamDefaults(BaseDefaults):
+    lex_attr_getters = LEX_ATTRS
     stop_words = STOP_WORDS
 
 

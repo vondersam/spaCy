@@ -1,6 +1,7 @@
 # Reserve 64 values for flag features
 from . cimport symbols
 
+
 cdef enum attr_id_t:
     NULL_ATTR
     IS_ALPHA
@@ -15,7 +16,7 @@ cdef enum attr_id_t:
     LIKE_NUM
     LIKE_EMAIL
     IS_STOP
-    IS_OOV
+    IS_OOV_DEPRECATED
     IS_BRACKET
     IS_QUOTE
     IS_LEFT_PUNCT
@@ -91,6 +92,8 @@ cdef enum attr_id_t:
 
     LANG
     ENT_KB_ID = symbols.ENT_KB_ID
+    MORPH
     ENT_ID = symbols.ENT_ID
 
     IDX
+    SENT_END

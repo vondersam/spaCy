@@ -1,10 +1,13 @@
-# coding: utf8
-from __future__ import unicode_literals
-
-from ..char_classes import LIST_ELLIPSES, LIST_ICONS, LIST_HYPHENS
-from ..char_classes import CONCAT_QUOTES, ALPHA, ALPHA_LOWER, ALPHA_UPPER
+from ..char_classes import (
+    ALPHA,
+    ALPHA_LOWER,
+    ALPHA_UPPER,
+    CONCAT_QUOTES,
+    LIST_ELLIPSES,
+    LIST_HYPHENS,
+    LIST_ICONS,
+)
 from ..punctuation import TOKENIZER_SUFFIXES
-
 
 _quotes = CONCAT_QUOTES.replace("'", "")
 DASHES = "|".join(x for x in LIST_HYPHENS if x != "-")

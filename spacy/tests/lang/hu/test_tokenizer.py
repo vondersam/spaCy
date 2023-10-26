@@ -1,8 +1,4 @@
-# coding: utf8
-from __future__ import unicode_literals
-
 import pytest
-
 
 DEFAULT_TESTS = [
     ("N. kormányzósági\nszékhely.", ["N.", "kormányzósági", "székhely", "."]),
@@ -297,7 +293,7 @@ WIKI_TESTS = [
 ]
 
 EXTRA_TESTS = (
-    DOT_TESTS + QUOTE_TESTS + NUMBER_TESTS + HYPHEN_TESTS + WIKI_TESTS + TYPO_TESTS
+    DOT_TESTS + QUOTE_TESTS + NUMBER_TESTS + HYPHEN_TESTS + WIKI_TESTS + TYPO_TESTS  # type: ignore[operator]
 )
 
 # normal: default tests + 10% of extra tests

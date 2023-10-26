@@ -1,18 +1,15 @@
-# coding: utf8
-from __future__ import unicode_literals
-
 import pytest
-from spacy import registry
-from thinc.v2v import Affine
 from catalogue import RegistryError
+from thinc.api import Linear
 
-
-@registry.architectures.register("my_test_function")
-def create_model(nr_in, nr_out):
-    return Affine(nr_in, nr_out)
+from spacy import registry
 
 
 def test_get_architecture():
+    @registry.architectures("my_test_function")
+    def create_model(nr_in, nr_out):
+        return Linear(nr_in, nr_out)
+
     arch = registry.architectures.get("my_test_function")
     assert arch is create_model
     with pytest.raises(RegistryError):

@@ -10,21 +10,11 @@ spacy/tests/package/setup.cfg
 spacy/tests/package/pyproject.toml
 spacy/tests/package/requirements.txt
 
-# Website
-website/.cache/
-website/public/
-website/node_modules
-website/.npm
-website/logs
-*.log
-npm-debug.log*
-website/www/
-website/_deploy.sh
-
 # Cython / C extensions
 cythonize.json
 spacy/*.html
 *.cpp
+*.c
 *.so
 
 # Vim / VSCode / editors
@@ -44,12 +34,15 @@ __pycache__/
 .env*
 .~env/
 .venv
+env3.6/
 venv/
 env3.*/
 .dev
 .denv
 .pypyenv
 .pytest_cache/
+.mypy_cache/
+.hypothesis/
 
 # Distribution / packaging
 env/
@@ -70,6 +63,7 @@ Pipfile.lock
 *.egg
 .eggs
 MANIFEST
+spacy/git_info.py
 
 # Temporary files
 *.~*
@@ -118,3 +112,6 @@ Desktop.ini
 
 # Pycharm project files
 *.idea
+
+# IPython
+.ipynb_checkpoints/

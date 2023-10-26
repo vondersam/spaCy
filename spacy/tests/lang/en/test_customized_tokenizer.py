@@ -1,12 +1,10 @@
-# coding: utf-8
-from __future__ import unicode_literals
+import re
 
 import pytest
-import re
+
 from spacy.lang.en import English
 from spacy.tokenizer import Tokenizer
-from spacy.util import compile_prefix_regex, compile_suffix_regex
-from spacy.util import compile_infix_regex
+from spacy.util import compile_infix_regex, compile_prefix_regex, compile_suffix_regex
 
 
 @pytest.fixture

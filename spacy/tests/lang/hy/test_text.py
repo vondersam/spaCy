@@ -1,6 +1,5 @@
-from __future__ import unicode_literals
-
 import pytest
+
 from spacy.lang.hy.lex_attrs import like_num
 
 

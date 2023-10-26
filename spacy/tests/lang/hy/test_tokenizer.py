@@ -1,7 +1,4 @@
-from __future__ import unicode_literals
-
 import pytest
-
 
 # TODO add test cases with valid punctuation signs.
 

@@ -1,8 +1,7 @@
-# coding: utf-8
-from __future__ import unicode_literals
-
 import pytest
+from thinc.api import ConfigValidationError
 
+from spacy.lang.zh import Chinese, _get_pkuseg_trie_data
 
 # fmt: off
 TEXTS = ("作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。",)
@@ -39,7 +38,41 @@ def test_zh_tokenizer_pkuseg(zh_tokenizer_pkuseg, text, expected_tokens):
     assert tokens == expected_tokens
 
 
-def test_extra_spaces(zh_tokenizer_char):
+def test_zh_tokenizer_pkuseg_user_dict(zh_tokenizer_pkuseg, zh_tokenizer_char):
+    user_dict = _get_pkuseg_trie_data(zh_tokenizer_pkuseg.pkuseg_seg.preprocesser.trie)
+    zh_tokenizer_pkuseg.pkuseg_update_user_dict(["nonsense_asdf"])
+    updated_user_dict = _get_pkuseg_trie_data(
+        zh_tokenizer_pkuseg.pkuseg_seg.preprocesser.trie
+    )
+    assert len(user_dict) == len(updated_user_dict) - 1
+
+    # reset user dict
+    zh_tokenizer_pkuseg.pkuseg_update_user_dict([], reset=True)
+    reset_user_dict = _get_pkuseg_trie_data(
+        zh_tokenizer_pkuseg.pkuseg_seg.preprocesser.trie
+    )
+    assert len(reset_user_dict) == 0
+
+    # warn if not relevant
+    with pytest.warns(UserWarning):
+        zh_tokenizer_char.pkuseg_update_user_dict(["nonsense_asdf"])
+
+
+def test_zh_extra_spaces(zh_tokenizer_char):
     # note: three spaces after "I"
     tokens = zh_tokenizer_char("I   like cheese.")
     assert tokens[1].orth_ == "  "
+
+
+def test_zh_unsupported_segmenter():
+    config = {"nlp": {"tokenizer": {"segmenter": "unk"}}}
+    with pytest.raises(ConfigValidationError):
+        Chinese.from_config(config)
+
+
+def test_zh_uninitialized_pkuseg():
+    config = {"nlp": {"tokenizer": {"segmenter": "char"}}}
+    nlp = Chinese.from_config(config)
+    nlp.tokenizer.segmenter = "pkuseg"
+    with pytest.raises(ValueError):
+        nlp("test")

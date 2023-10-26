@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-
-
 STOP_WORDS = set(
     """
 նա
@@ -105,6 +102,6 @@ STOP_WORDS = set(
 յուրաքանչյուր
 այս
 մեջ
-թ	
+թ
 """.split()
 )

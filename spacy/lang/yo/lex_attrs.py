@@ -1,10 +1,6 @@
-# coding: utf8
-from __future__ import unicode_literals
-
 import unicodedata
 
 from ...attrs import LIKE_NUM
-
 
 _num_words = [
     "ení",

@@ -1,8 +1,4 @@
-# coding: utf8
-from __future__ import unicode_literals
-
 import pytest
-
 
 INFIX_HYPHEN_TESTS = [
     ("Явым-төшем күләме.", "Явым-төшем күләме .".split()),

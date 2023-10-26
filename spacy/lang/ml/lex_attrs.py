@@ -1,8 +1,4 @@
-# coding: utf8
-from __future__ import unicode_literals
-
 from ...attrs import LIKE_NUM
-
 
 # reference 2: https://www.omniglot.com/language/numbers/malayalam.htm
 
@@ -55,7 +51,7 @@ _num_words = [
     "തൊണ്ണൂറ് ",
     "നുറ് ",
     "ആയിരം ",
-    "പത്തുലക്ഷം"
+    "പത്തുലക്ഷം",
 ]
 
 

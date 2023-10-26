@@ -1,6 +1,3 @@
-# coding: utf-8
-from __future__ import unicode_literals
-
 import pytest
 
 
@@ -35,14 +32,6 @@ def test_da_tokenizer_handles_custom_base_exc(da_tokenizer):
     assert len(tokens) == 8
     assert tokens[6].text == "i"
     assert tokens[7].text == "."
-
-
-@pytest.mark.parametrize(
-    "text,norm", [("akvarium", "akvarie"), ("bedstemoder", "bedstemor")]
-)
-def test_da_tokenizer_norm_exceptions(da_tokenizer, text, norm):
-    tokens = da_tokenizer(text)
-    assert tokens[0].norm_ == norm
 
 
 @pytest.mark.parametrize(

@@ -1,9 +1,4 @@
-# coding: utf8
-from __future__ import unicode_literals
-
-
 STOP_WORDS = set(
-
     """
 അത്
 ഇത്
